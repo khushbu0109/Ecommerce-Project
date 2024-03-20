@@ -38,39 +38,46 @@ const productSchema = new mongoose.Schema({
     type: String,
   },
   tags: {
-    type:String
+    type: String,
   },
   cat_id: {
     type: Schema.Types.ObjectId,
     require: true,
     ref: "category",
   },
-  images:{
-    type:String,
-    require:true,
-    trim:true
+  images: {
+    type: String,
+    require: true,
+    trim: true,
   },
-  Delivery_Day:{
-    type:String
+  Delivery_Day: {
+    type: String,
   },
-  Customer_Review:{
-    type:String
+  Customer_Review: {
+    type: String,
   },
-  Discount:{
-    type:String
+  Discount: {
+    type: String,
   },
-  Sizes:{
-    type:String
+  Sizes: {
+    type: String,
   },
-  Availability:{
-    type:String
+  Availability: {
+    type: String,
   },
 
-  attributes:{
-    type:String
-  },
+  attributes: [
+    {
+      name: {
+        type: String,
+      },
+      description: {
+        type: String,
+      },
+    },
+  ],
   variations: {
-    type:String
+    type: String,
   },
   stock_status: {
     type: String,

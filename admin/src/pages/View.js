@@ -34,7 +34,7 @@ export default function View(props) {
     sale_price: "",
     tags: "",
     cat_id: "",
-    attributes: "",
+
     variations: "",
     stock_status: "",
     Delivery_Day: "",
@@ -42,12 +42,60 @@ export default function View(props) {
     Discount: "",
     Sizes: "",
     Availability: "",
+    attributes: [
+      {
+        id: 0,
+        name: "",
+        descrption: "",
+      },
+    ],
   });
 
+  /* attribute state starts here */
+
+  const [attribute, setAttribute] = useState([
+    {
+      id: 0,
+      name: "",
+      descrption: "",
+    },
+  ]);
+
+  const addAttribute = (e) => {
+    e.preventDefault();
+    const value = {
+      id: attribute.length,
+      opt: "",
+      score: 0,
+    };
+    setAttribute(attribute.concat(value));
+  };
+  const removeAttribute = (e, mid) => {
+    e.preventDefault();
+    const newoption = attribute.filter((com) => {
+      return com.id !== mid;
+    });
+    if (attribute.length > 0) {
+      setAttribute(newoption);
+    }
+  };
+
+  /* attribute state ends here */
   const [addProductModel, setAddProductModel] = useState(false);
 
   const openData = () => {
     setAddProductModel(!addProductModel);
+    setAttribute([
+      {
+        id: 0,
+        name: "",
+        descrption: "",
+      },
+    ]);
+  };
+  const onAttiChange = (e, index) => {
+    const elemet = attribute[index];
+    elemet.name = e.target.value;
   };
 
   const onChange = (e) => {
@@ -57,7 +105,10 @@ export default function View(props) {
   const handleClick = async (e) => {
     e.preventDefault();
     setPreloader("preShow");
+    product.attributes = attribute;
+
     const response = await createProduct(newProduct);
+
     if (response.status === "Success") {
       openData();
       navigate("/products");
@@ -94,7 +145,7 @@ export default function View(props) {
         <div className="container-xxl flex-grow-1 container-p-y">
           <form id="formAccountSettings" method="POST">
             <div className="row">
-              <div className="col-lg-6 mb-4 ">
+              <div className="col-md-8">
                 <div className="card two">
                   <h5 className="card-header">
                     <div className="row">
@@ -106,16 +157,6 @@ export default function View(props) {
                         </ul>
                       </div>
                       <div className="text-left">
-                        <label className="form-label">Enter Slug</label>
-                        <input
-                          type="text"
-                          className="form-control  mb-3   m-0"
-                          name="slug"
-                          id=""
-                          aria-describedby="helpId"
-                          placeholder="Enter Slug"
-                          onChange={onChange}
-                        />
                         <label className="form-label">Product Name</label>
                         <input
                           type="text"
@@ -142,304 +183,49 @@ export default function View(props) {
                   </h5>
                 </div>
               </div>
-
-              <div className="col-lg-6 mb-4 ">
+              <div className="col-lg-4 mb-4 ">
                 <div className="card two">
                   <h5 className="card-header">
                     <div className="row">
                       <div className="col-lg-6 font-bold mb-4">
                         <ul className="slider_button slider-white plain-orange">
-                          <li className="slider-active me-3">
-                            Pricing
-                          </li>
+                          <li className="slider-active me-3"> Media</li>
                         </ul>
                       </div>
                       <div className=" text-left">
-                        <label className="form-label">Product price</label>
-                        <input
-                          type="text"
-                          className="form-control  mb-3  m-0"
-                          name="price"
-                          id=""
-                          aria-describedby="helpId"
-                          placeholder="price"
-                          onChange={onChange}
-                        />
-                        <label className="form-label">Regular Price</label>
-                        <input
-                          type="Number"
-                          className="form-control  mb-3  m-0"
-                          name="regular_price"
-                          id=""
-                          aria-describedby="helpId"
-                          placeholder="regular_price"
-                          onChange={onChange}
-                        />
-                        <label className="form-label">Sale Price</label>
-                        <input
-                          type="Number"
-                          className="form-control  mb-3  m-0"
-                          name="sale_price"
-                          id=""
-                          aria-describedby="helpId"
-                          placeholder="sale_price "
-                          onChange={onChange}
-                        />
-                      </div>
-                    </div>
-                  </h5>
-                </div>
-              </div>
+                        <ChooseCategory onChange={onChange} type="blog" />
 
-
-              <div className="col-lg-6 mb-4 ">
-                <div className="card two">
-                  <h5 className="card-header">
-                    <div className="row">
-                      <div className="col-lg-6 font-bold mb-4">
-                        <ul className="slider_button slider-white plain-orange">
-                          <li className="slider-active me-3">
-                            Products Details
-                          </li>
-                        </ul>
-                      </div>
-                      <div className=" text-left">
-                        <label className="form-label"> Delivery_Day</label>
-                        <input
-                          type="text"
-                          className="form-control  mb-3  m-0"
-                          name="Delivery_Day"
-                          id=""
-                          aria-describedby="helpId"
-                          placeholder=" Delivery_Day "
-                          onChange={onChange}
-                        />
-                        <label className="form-label">Customer_Review</label>
-                        <input
-                          type="text"
-                          className="form-control  mb-3  m-0"
-                          name="Customer_Review"
-                          id=""
-                          aria-describedby="helpId"
-                          placeholder="Customer_Review"
-                          onChange={onChange}
-                        />
-                        <label className="form-label">Discount</label>
-                        <input
-                          type="text"
-                          className="form-control  mb-3  m-0"
-                          name="Discount"
-                          id=""
-                          aria-describedby="helpId"
-                          placeholder="Discount"
-                          onChange={onChange}
-                        />
-                      </div>
-                    </div>
-                  </h5>
-                </div>
-              </div>
-              <div className="col-lg-6 mb-4 ">
-                <div className="card two">
-                  <h5 className="card-header">
-                    <div className="row">
-                      <div className="col-lg-6 font-bold mb-4">
-                        <ul className="slider_button slider-white plain-orange">
-                          <li className="slider-active me-3">
-                            Products Details
-                          </li>
-                        </ul>
-                      </div>
-                      <div className=" text-left">
-                        <label className="form-label">Variations</label>
-                        <input
-                          type="text"
-                          className="form-control  mb-3  m-0"
-                          name="variations"
-                          id=""
-                          aria-describedby="helpId"
-                          placeholder="variations"
-                          onChange={onChange}
-                        />
-                        <label className="form-label"> Availability</label>
-                        <input
-                          type="text"
-                          className="form-control  mb-3  m-0"
-                          name="Availability"
-                          id=""
-                          aria-describedby="helpId"
-                          placeholder=" Availability"
-                          onChange={onChange}
-                        />
-                        <label className="form-label">Product Tags</label>
-                        <input
-                          type="text"
-                          className="form-control  mb-3  m-0"
-                          name="tags"
-                          id=""
-                          aria-describedby="helpId"
-                          placeholder="tags"
-                          onChange={onChange}
-                        />
-
-                      </div>
-                    </div>
-                  </h5>
-                </div>
-              </div>
-              <div className="col-lg-6 mb-4 ">
-                <div className="card two">
-                  <h5 className="card-header">
-                    <div className="row">
-                      <div className="col-lg-6 font-bold mb-4">
-                        <ul className="slider_button slider-white plain-orange">
-                          <li className="slider-active me-3">Inventory</li>
-                        </ul>
-                      </div>
-                      <div className=" text-left">
-                        <label className="form-label">Sku</label>
-                        <input
-                          type="text"
-                          className="form-control  mb-3  m-0"
-                          name="sku"
-                          id=""
-                          aria-describedby="helpId"
-                          placeholder="sku"
-                          onChange={onChange}
-                        />
-
-                        <label className="form-label ">Stock Status</label>
-                        <table width="100%" className="mb-3">
-                          <tr>
-                            <td>
-                              <div className="form-check mt-2">
-                                <input
-                                  type="radio"
-                                  className="form-check-input"
-                                  name="stock_status"
-                                  value={false}
-                                  onChange={onChange}
-                                />
-                                <label className="form-label">In Stock</label>
-                              </div>
-                            </td>
-                            <td>
-                              <div className="form-check">
-                                <input
-                                  type="radio"
-                                  className="form-check-input"
-                                  name="stock_status"
-                                  value={true}
-                                  onChange={onChange}
-                                />
-                                <label className="form-label">
-                                  Out of Stock
-                                </label>
-                              </div>
-                            </td>
-                            <td>
-                              <div className="form-check">
-                                <input
-                                  type="radio"
-                                  className="form-check-input"
-                                  name="stock_status"
-                                  value={true}
-                                  onChange={onChange}
-                                />
-                                <label className="form-label">
-                                  On Backorder
-                                </label>
-                              </div>
-                            </td>
-                          </tr>
-                        </table>
-                        <label className="form-label">Product Status</label>
-
-                        <table width="100%" className="mb-3">
-                          <tr>
-                            <td>
-                              <div className="form-check">
-                                <input
-                                  type="radio"
-                                  className="form-check-input"
-                                  name="status"
-                                  value={false}
-                                  onChange={onChange}
-                                />
-                                <label className="form-label">Pending</label>
-                              </div>
-                            </td>
-                            <td>
-                              <div className="form-check">
-                                <input
-                                  type="radio"
-                                  className="form-check-input"
-                                  name="status"
-                                  value={true}
-                                  onChange={onChange}
-                                />
-                                <label className="form-label">Approved</label>
-                              </div>
-                            </td>
-                          </tr>
-                        </table>
-                      </div>
-                    </div>
-                  </h5>
-                </div>
-              </div>
-              <div className="col-lg-6 mb-4 ">
-                <div className="card two">
-                  <h5 className="card-header">
-                    <div className="row">
-                      <div className="col-lg-6 font-bold mb-4">
-                        <ul className="slider_button slider-white plain-orange">
-                          <li className="slider-active me-3">Attribute</li>
-                        </ul>
-                      </div>
-                      <div className=" text-left">
-                        <div className="d-flex  mb-3  m-0" style={{gap: "47px"}}>
-                          <button type="button" class="btn btn-outline-primary btns">
-                            Add new
-                          </button>
-                          <div class="dropdown">
-                            <button
-                              class="btn btn-secondary dropdown-toggle"
-                              type="button"
-                              id="dropdownMenuButton1"
-                              data-bs-toggle="dropdown"
-                              aria-expanded="false"
-                            >
-                              Dropdown button
-                            </button>
-                            <ul
-                              class="dropdown-menu"
-                              aria-labelledby="dropdownMenuButton1"
-                            >
-                              <li>Action</li>
-                              <li>Another action</li>
-                              <li>Something else here</li>
-                            </ul>
+                        <div className="form-group">
+                          <label className="form-label">Choose Image</label>
+                          <div className="" onClick={openMedia}>
+                            <img
+                              className="img-fluid"
+                              src={
+                                newProduct.images === undefined ||
+                                newProduct.images === ""
+                                  ? "./assets/img/illus/upload.png"
+                                  : newProduct.images
+                              }
+                              alt=""
+                              width={50}
+                            />
                           </div>
                         </div>
-                        <label className="form-label">Name</label>
+                        {mediaModel && (
+                          <ChooseMedia
+                            open={openMedia}
+                            selectImage={selectImage}
+                            showAlert={props.showAlert}
+                          />
+                        )}
+                        <label className="form-label">Sizes</label>
                         <input
                           type="text"
                           className="form-control  mb-3  m-0"
-                          name="attribute"
+                          name="Sizes"
                           id=""
                           aria-describedby="helpId"
-                          placeholder="f.e. size or color"
-                          onChange={onChange}
-                        />
-                        <label className="form-label"> Value</label>
-                        <input
-                          type="text"
-                          className="form-control  mb-3  m-0"
-                          name="description"
-                          id=""
-                          aria-describedby="helpId"
-                          placeholder=" Enter some description"
+                          placeholder="Sizes"
                           onChange={onChange}
                         />
                       </div>
@@ -447,94 +233,271 @@ export default function View(props) {
                   </h5>
                 </div>
               </div>
-              <div className="col-lg-6 mb-4 ">
-              <div className="card two">
-                <h5 className="card-header">
-                  <div className="row">
-                    <div className="col-lg-6 font-bold mb-4">
-                      <ul className="slider_button slider-white plain-orange">
-                        <li className="slider-active me-3">
-                          Products Details
-                        </li>
-                      </ul>
-                    </div>
-                    <div className=" text-left">
-                      <label className="form-label">Date Modified</label>
-                      <input
-                        type="date"
-                        className="form-control  mb-3  m-0"
-                        name="date_modified"
-                        id=""
-                        aria-describedby="helpId"
-                        placeholder="date_modified"
-                        onChange={onChange}
-                      />
-                      <label className="form-label">Date Created</label>
-                      <input
-                        type="date"
-                        className="form-control mb-3   m-0"
-                        name="date_created"
-                        id=""
-                        aria-describedby="helpId"
-                        placeholder="date_created"
-                        onChange={onChange}
-                      />
 
-
-
-                    </div>
-                  </div>
-                </h5>
-              </div>
-            </div>
-            <div className="col-lg-6 mb-4 ">
-            <div className="card two">
-              <h5 className="card-header">
-                <div className="row">
-                  <div className="col-lg-6 font-bold mb-4">
-                    <ul className="slider_button slider-white plain-orange">
-                      <li className="slider-active me-3">
-                        Products Details
+              <div class="row gx-3 gx-lg-5 ">
+                <div className="card-title prod-details ">Product Data</div>
+                <div className="card two p-3" style={{ flexDirection: "row" }}>
+                  <div class="col-3 p-1">
+                    <ul
+                      class="nav nav-tabs nav-tabs-vertical "
+                      style={{ flexDirection: "column" }}
+                      role="tablist"
+                    >
+                      <li class="nav-item m-2" role="presentation">
+                        <a
+                          class="nav-link active p-2"
+                          id="vertical-tab-0"
+                          data-bs-toggle="tab"
+                          href="#vertical-tabpanel-0"
+                          role="tab"
+                          aria-controls="vertical-tabpanel-0"
+                          aria-selected="true"
+                        >
+                          <div className="content-icon d-flex">
+                            <box-icon name="wrench" type="solid"></box-icon>
+                            <div className="heading-title">General</div>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="nav-item m-2" role="presentation">
+                        <a
+                          class="nav-link p-2"
+                          id="vertical-tab-1"
+                          data-bs-toggle="tab"
+                          href="#vertical-tabpanel-1"
+                          role="tab"
+                          aria-controls="vertical-tabpanel-1"
+                          aria-selected="false"
+                        >
+                          <div className="content-icon d-flex">
+                            <box-icon name="notepad" type="solid"></box-icon>
+                            <div className="heading-title">Inventory</div>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="nav-item m-2" role="presentation">
+                        <a
+                          class="nav-link p-2"
+                          id="vertical-tab-2"
+                          data-bs-toggle="tab"
+                          href="#vertical-tabpanel-2"
+                          role="tab"
+                          aria-controls="vertical-tabpanel-2"
+                          aria-selected="false"
+                        >
+                          <div className="content-icon d-flex">
+                            <box-icon name="list-check"></box-icon>
+                            <div className="heading-title">Attributes</div>
+                          </div>
+                        </a>
                       </li>
                     </ul>
                   </div>
-                  <div className=" text-left">
-                    <ChooseCategory onChange={onChange} type="blog" />
+                  <div class="col-9 p-1">
+                    <div
+                      class="tab-content p-0"
+                      id="tab-content"
+                      aria-orientation="vertical"
+                    >
+                      <div
+                        class="tab-pane active"
+                        id="vertical-tabpanel-0"
+                        role="tabpanel"
+                        aria-labelledby="vertical-tab-0"
+                      >
+                        <div className=" text-left">
+                          <label className="form-label">Regular Price</label>
+                          <input
+                            type="text"
+                            className="form-control  mb-3  m-0"
+                            name="regular_price"
+                            id=""
+                            aria-describedby="helpId"
+                            placeholder="regular price"
+                            onChange={onChange}
+                          />
+                        </div>
+                        <div className=" text-left">
+                          <label className="form-label">Sale Price</label>
+                          <input
+                            type="text"
+                            className="form-control  mb-3  m-0"
+                            name="sale_price"
+                            id=""
+                            aria-describedby="helpId"
+                            placeholder="sale price"
+                            onChange={onChange}
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="tab-pane"
+                        id="vertical-tabpanel-1"
+                        role="tabpanel"
+                        aria-labelledby="vertical-tab-1"
+                      >
+                        <div className=" text-left">
+                          <label className="form-label">Sku</label>
+                          <input
+                            type="text"
+                            className="form-control  mb-3  m-0"
+                            name="sku"
+                            id=""
+                            aria-describedby="helpId"
+                            placeholder="sku"
+                            onChange={onChange}
+                          />
 
-                    <div className="form-group">
-                      <label className="form-label">Choose Image</label>
-                      <div className="" onClick={openMedia}>
-                        <img
-                          className="img-fluid"
-                          src={
-                            newProduct.images === undefined ||
-                            newProduct.images === ""
-                              ? "./assets/img/illus/upload.png"
-                              : newProduct.images
-                          }
-                          alt=""
-                          width={50}
-                        />
+                          <label className="form-label ">Stock Status</label>
+                          <table width="100%" className="mb-3">
+                            <tr>
+                              <td>
+                                <div className="form-check mt-2">
+                                  <input
+                                    type="radio"
+                                    className="form-check-input"
+                                    name="stock_status"
+                                    value={false}
+                                    onChange={onChange}
+                                  />
+                                  <label className="form-label">In Stock</label>
+                                </div>
+                              </td>
+                              <td>
+                                <div className="form-check">
+                                  <input
+                                    type="radio"
+                                    className="form-check-input"
+                                    name="stock_status"
+                                    value={true}
+                                    onChange={onChange}
+                                  />
+                                  <label className="form-label">
+                                    Out of Stock
+                                  </label>
+                                </div>
+                              </td>
+                              <td>
+                                <div className="form-check">
+                                  <input
+                                    type="radio"
+                                    className="form-check-input"
+                                    name="stock_status"
+                                    value={true}
+                                    onChange={onChange}
+                                  />
+                                  <label className="form-label">
+                                    On Backorder
+                                  </label>
+                                </div>
+                              </td>
+                            </tr>
+                          </table>
+                          <label className="form-label">Product Status</label>
+
+                          <table width="100%" className="mb-3">
+                            <tr>
+                              <td>
+                                <div className="form-check">
+                                  <input
+                                    type="radio"
+                                    className="form-check-input"
+                                    name="status"
+                                    value={false}
+                                    onChange={onChange}
+                                  />
+                                  <label className="form-label">Pending</label>
+                                </div>
+                              </td>
+                              <td>
+                                <div className="form-check">
+                                  <input
+                                    type="radio"
+                                    className="form-check-input"
+                                    name="status"
+                                    value={true}
+                                    onChange={onChange}
+                                  />
+                                  <label className="form-label">Approved</label>
+                                </div>
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+                      </div>
+                      <div
+                        class="tab-pane"
+                        id="vertical-tabpanel-2"
+                        role="tabpanel"
+                        aria-labelledby="vertical-tab-2"
+                      >
+                        {attribute.map((p, i) => {
+                          return (
+                            <>
+                              <span
+                                className="spand"
+                                onClick={(e) => {
+                                  addAttribute(e);
+                                }}
+                              >
+                                Add
+                                <i class="fa-solid fa-plus ms-2"></i>
+                              </span>
+                              <div className="row mt-3">
+                                <div className="col-6">
+                                  <div className="form-group">
+                                    <div id="TextBoxesGroup">
+                                      <input
+                                        type="text"
+                                        className="form-control  mt-2  m-0"
+                                        name="name"
+                                        id=""
+                                        aria-describedby="helpId"
+                                        placeholder="Enter Name"
+                                        onChange={(e) => {
+                                          onAttiChange(e, i);
+                                        }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="col-6">
+                                  <div className="form-group">
+                                    <div id="TextBoxesGroup">
+                                      <input
+                                        type="text"
+                                        className="form-control  mt-2  m-0"
+                                        name="description"
+                                        id=""
+                                        aria-describedby="helpId"
+                                        placeholder="Enter Description"
+                                        onChange={(e) => {
+                                          onAttiChange(e, i);
+                                        }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  className="spanded"
+                                  onClick={(e) => {
+                                    removeAttribute(e, i);
+                                  }}
+                                >
+                                  Remove
+                                </div>
+                                <div className="attBtns d-flex"></div>
+                              </div>
+                            </>
+                          );
+                        })}
                       </div>
                     </div>
-{mediaModel &&  <ChooseMedia open={openMedia} selectImage={selectImage} showAlert={props.showAlert}/>}
-                    <label className="form-label">Sizes</label>
-                    <input
-                      type="text"
-                      className="form-control  mb-3  m-0"
-                      name="Sizes"
-                      id=""
-                      aria-describedby="helpId"
-                      placeholder="Sizes"
-                      onChange={onChange}
-                    />
                   </div>
                 </div>
-              </h5>
+              </div>
             </div>
-          </div>
 
-            </div>
             <div className="mt-3">
               <button
                 type="reset"

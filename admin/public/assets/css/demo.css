@@ -11,13 +11,12 @@
   height: 64px;
     margin-top: 5px
 }
-
 .img_del {
-  position: absolute;
-  top: 0;
-  right: 2%;
-  padding: 10px;
-  z-index: 9;
+    position: absolute;
+    top: 0;
+    right: 10%;
+    padding: 3px;
+    z-index: 9;
 }
 .img_del i {
   color: red;
@@ -32,7 +31,9 @@
   letter-spacing: -0.5px;
   /* text-transform: lowercase; */
 }
-
+.card{
+  border: none!important;
+}
 /* ! For .layout-navbar-fixed added fix padding top tpo .layout-page */
 /* Detached navbar */
 .layout-navbar-fixed
@@ -482,4 +483,28 @@ i.in.bx.bxs-up-arrow {
 }
 i.in.bx.bxs-down-arrow {
   font-size: 12px;
+}
+
+
+.heading-title {
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+
+
+.spanded {
+    margin-top: 20px;
+    text-align: right;
+    color: red;
+    font-size: 13px;
+}
+span.spand {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #6363cf;
+    padding: 6px 25px;
+    border-radius: 30px;
+    /* margin-bottom: 7px; */
 }

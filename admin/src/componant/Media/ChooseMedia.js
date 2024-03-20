@@ -27,8 +27,7 @@ export default function ChooseMedia(props) {
   /* upload */
   const [mediaInfo, setmediaInfo] = useState({
     "title": "",
-    "title2": "",
-    "title3": "",
+
     "cat_id": "",
     "m_type": "youtube",
     "m_url": ""
@@ -61,8 +60,7 @@ export default function ChooseMedia(props) {
         from_data.append("file", element)
       }
       from_data.append("title", mediaInfo.title)
-      from_data.append("title2", mediaInfo.title2)
-      from_data.append("title3", mediaInfo.title3)
+    
       if (mediaInfo.cat_id === "") {
         props.showAlert("please choose category . ", "warning")
         return
@@ -249,26 +247,7 @@ export default function ChooseMedia(props) {
                   </button>
                 </div>
               </form>
-              <ul className="slider_button slider-white plain-orange mb-2">
-                <li className={`${changeimg !== "audio" ? "" : "slider-active"}`}
-                  onClick={() => {
-                    ImageChange("audio")
-                  }}>
-
-                  Audio</li>
-                <li className={`${changeimg === "video" || changeimg === "audio" ? "" : "slider-active"}`}
-                  onClick={() => {
-                    ImageChange("image")
-                  }}>
-                  Images</li>
-                <li className={`${changeimg === "image" || changeimg === "audio" ? "" : "slider-active"}`}
-                  onClick={() => {
-                    ImageChange("video")
-                  }}>
-
-                  Video</li>
-
-              </ul>
+             
               <div className="row">
                 {media.filter((img) => {
                   return img.m_type?.includes(changeimg?.toLowerCase())

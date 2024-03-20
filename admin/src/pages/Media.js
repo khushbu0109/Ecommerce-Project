@@ -226,8 +226,7 @@ const openMediaEdit = (med) => {
                     <div className="col-lg-6 font-bold">
                       <ul className="slider_button slider-white plain-orange">
                         <li className="slider-active">Images</li>
-                        <li className="slider-active">Audio</li>
-                        <li className="slider-active">Vedios</li>
+                        
                       </ul>
 
                     </div>
@@ -249,7 +248,7 @@ const openMediaEdit = (med) => {
 
                         <div
                         key={i}
-                          className="col-2 mb-2 thumbnail mx-2"
+                          className="col-1 mb-2 thumbnail mx-2"
                           style={{ position: "relative" }}
                         >
                           <div className="img_del" onClick={()=>delete_media(med._id)}>

@@ -2821,8 +2821,8 @@ textarea.form-control-lg {
   background-color: #7272717b!important
 }
 .orange-btn{
-  background: #f2ab15!important;
-    border-color: black !important;
+  background: #1e85a2!important;
+  
     color: white!important;
     font-size: 1em!important;
     padding: 0.5rem 1.15rem !important;
@@ -3368,9 +3368,10 @@ textarea.form-control-lg {
 }
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #697a8d;
-  background-color: #fff;
+  color: #3f4751;
+  background-color: #c4bebe;
   border-color: #fff;
+  border-radius: 50px;
 }
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
@@ -7215,7 +7216,7 @@ button:focus {
 .nav-tabs .nav-item .nav-link {
   color: #566a7f;
   border: 0;
-  border-radius: 0;
+  border-radius: 10px;
 }
 .nav-tabs .nav-item .nav-link:hover, .nav-tabs .nav-item .nav-link:focus {
   color: #566a7f;
@@ -15270,7 +15271,7 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
 button.btn.btn-outline-primary.btns {
   color: black;
   background: white;
-  border-color: #8592a3;
+
     box-shadow: 0 0.125rem 0.25rem 0 rgba(133, 146, 163, 0.4)
 }
 .menu-collapsed:not(:hover) {
