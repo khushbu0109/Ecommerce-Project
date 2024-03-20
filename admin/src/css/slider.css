@@ -1,0 +1,125 @@
+.wraper{
+    width: 100%;
+    height: 100%;
+    /* background-color: red;     */
+}
+.btn_group{
+    width: 340px;
+    height: 40px;
+    border-radius: 20px;
+    
+    padding: 10px 40px;
+    line-height: 40px;
+    position: relative;
+    z-index: 1;
+    margin-left: auto;
+    margin-right: auto;    
+    background-color: #f5f5f9;
+}
+.btn_one{
+    float: left;
+    line-height: 20px;
+    color: #7272716b;
+    transition: 0.1s;
+    margin: 0;
+    
+    border-radius: 20px;
+    width: 33.33%;
+    text-align: center;
+    cursor: pointer;
+}
+.btn_two{
+    float: left;
+    line-height: 20px;
+    color: #7272716b;
+    margin: 0;
+    width: 33.33%;
+    
+    cursor: pointer;
+}
+.btn_three{
+    float: left;
+    width: 33.33%;
+    line-height: 20px;
+    color: black;
+    margin: 0;    
+    cursor: pointer;
+    text-align: right;
+}
+.btn_bg{
+    background-color: #ef6817;
+    height: 100%;
+    width: 33.33%;
+    position: absolute;
+    top: 0;    
+    left: 0%;
+    z-index: -1;
+    transition: 0.2s;
+    border-radius: 20px;
+}
+
+.wraperManage .btn_two{
+    width: 50%!important;
+    padding-left: 12px;
+}
+.wraperManage .btn_one{
+    width: 50%!important;
+}
+.wraperManage .btn_bg{
+    width: 50%!important;
+}
+.wraperManage .btn_group{
+    padding: 10px 0px;
+}
+.activeSlider{
+    color: white;
+}
+.catlog_active{
+    border: 1px solid #727271;
+}
+
+.discount{
+    font-size: 1.25em!important;
+}
+
+.datatables-basic tr td{
+    color:#727271;
+}
+.unitSpan{
+    font-size: 0.75em!important;
+    display: flex;
+}
+
+.showAleryDialog{
+    background: "#00000080";
+    display: "block";
+    z-index: 999999999999999999;
+}
+
+.attrprice li {
+    display: inline-block;
+    /* list-style: inline; */
+    padding: 3px;
+    border: 1px solid;
+    margin: 1px;
+    border-radius: 4px;
+}
+.attrContainer{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.acceptOrder{
+    margin: 0;
+    padding: 0;
+}
+
+.report_filter_card{
+    font-size: 0.7em!important;
+}
+.report_filter_card .active{
+    background-color: #7272716b!important;
+    color: white;
+    border:#ef6817;
+}

@@ -1,0 +1,166 @@
+.orderId{
+    color: #273D8E!important;
+}
+.orderHeading{
+    color: black;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 0.3em!important;
+}
+.orderBtn{
+    background: #ef6817!important;
+    color: white;
+    font-weight: normal;
+}
+.orderd_image_containe{
+    width: 80px;
+    height: 80px!important;    
+    overflow: hidden;    
+    padding: 0!important;
+    margin-left: 0.25em;
+}
+.order_details th{
+    padding: 0 1.25rem!important;
+}
+.o_d_title{
+    color: black;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding-top: 0.25em;
+    padding-bottom: 0.35em;
+    margin: 0;
+}
+.o_d_vari{
+    display: block;
+    color: #273D8E!important;
+    font-weight: bold;
+}
+.myCompany .muted{
+    color: #273D8E;
+}
+
+.orderDetailTable > :not(caption) > * > * {
+    padding: 1.5rem 1.25rem;
+}
+
+.orderDetailTable tbody, .orderDetailTable tfoot{
+    border-style: none!important;
+    border-color: white;
+}
+
+.order_note{
+    color: black;
+
+}
+.order_note_content{
+    color: #727271;
+}
+
+.o_d_amt{
+color: black!important;
+}
+
+tfoot.orderfoot {
+    border-top: 1px solid #7272716b !important;
+    border-width: 20%!important;
+}
+
+.counterBtn{
+    font-size: 0.9em;
+    padding: 0.6em 1.2em;
+}
+.o_d_journey {
+    list-style: none;
+    margin: 0.5em;
+    padding: 0;       
+}
+.o_d_journey li{    
+    padding: 1.6em 1em;
+}
+
+.o_d_journey li .badge{
+    margin-right: 0.5em;
+}
+
+.o_d_journey li .badge{
+    position: relative;
+    z-index: 99999;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-size: 2em;
+    color: #183153!important;
+    background-color: #1831530f!important;    
+}
+.o_d_journey .j_text{
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.o_d_journey li .badge::before{    
+    content: " ";
+    width: 1px;
+    height: 85%;
+    background: #727271;
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    right: 0;
+    margin-right: auto;
+    margin-left: auto;
+    z-index: 99;
+}
+
+.o_d_journey li:last-child .badge::before{
+    display: none;
+}
+
+.o_d_journey li .badge .bx{
+    font-size: 0.8em;
+}
+.o_d_journey li span  img{
+    
+}
+.orderDetailSection .table-responsive{
+    padding: 0.25em;
+}
+
+.fixed-button-myorder-details{
+    position: fixed;
+    bottom: 2em;
+    right: 3.5em;
+}
+
+.orderStatusbtn .accept{
+    background-color: green;
+    color: white;
+    border-radius: 20px;
+    padding: 0.6em 1.8em;
+    font-size: 15px;
+    margin-left: 1em;
+    border: none;
+}
+
+.orderStatusbtn .reject{
+    background-color: red;
+    color: white;
+    border-radius: 20px;
+    padding: 0.6em 1.8em;
+    font-size: 15px;
+    margin-left: 2em;
+    border: none;
+}
+.totalCell span{
+    color: black!important;
+}
+
+.o_d_price_cell, .totalCell{
+    text-align: right;
+}
+.o_d_p_cell_value{
+    font-weight: bold;
+}
+.o_d_qty{
+    text-align: center;
+    font-weight: bold;
+}

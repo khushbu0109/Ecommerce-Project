@@ -1,0 +1,97 @@
+.loaderBody{
+    width: 100%;
+    background-color: #7272716b;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 99999999999;
+    text-align: center;
+    display: none;    
+}
+
+
+.preShow{
+  display: block!important;
+}
+
+.loader {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top:0;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    
+    /* border: px solid #f3f3f3; */
+    border-radius: 50%;
+    border-top: 8px solid #EF6817;
+    width: 80px;
+    height: 80px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
+
+
+  /* diverder */
+  .verticleDivider::before{
+    content: " ";
+    height: auto;
+    position: absolute;
+    width: 1px;
+    border-left:2px dotted #EF6817;
+  }
+  .card-title{
+    color: black;
+  }
+  .catenickname{
+    font-size: 80%;
+    color: #7272716b;
+  }
+  .mycatelog{
+    background: rgb(255 242 146 / 65%);
+  }
+  .my-dropdown{
+    background: #e9e9e9b7;
+  }
+
+
+
+
+  .filterSection1{
+    float: left;
+    width: 10%;
+  }
+
+  .filterSection{
+    float: left;
+    width: 90%;
+  }
+  .myfilter{
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+  .applybtn{
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: #EF6817;
+    color: white;
+    border: #727271;
+  }
+  
